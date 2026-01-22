@@ -72,7 +72,7 @@ CloudFormation do
               )
 
     
-  OpenSearchService('OpenSearchVPCCluster') do
+  openSearchService_Domain('OpenSearchVPCCluster') do
     DomainName Ref('OSDomainName')
     AdvancedOptions advanced_options unless advanced_options.empty?
     Property(:DomainEndpointOptions, {
