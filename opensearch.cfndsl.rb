@@ -49,6 +49,7 @@ CloudFormation do
 
   advanced_options = external_parameters.fetch(:advanced_options, {})
   ebs_options = external_parameters.fetch(:ebs_options, {})
+  aiml_options = external_parameters.fetch(:aiml_options, {})
   domain_endpoint_options = external_parameters.fetch(:domain_endpoint_options, {})
   enforce_https = domain_endpoint_options.has_key?('EnforceHTTPS') ? domain_endpoint_options['EnforceHTTPS'] : 'false'
   tls_policy = domain_endpoint_options.has_key?('TLSSecurityPolicy') ? domain_endpoint_options['TLSSecurityPolicy'] : Ref('AWS::NoValue')
@@ -82,6 +83,7 @@ CloudFormation do
          CustomEndpoint: FnIf('CustomEndpointEnabled', Ref('CustomEndpoint'), Ref('AWS::NoValue')),
          CustomEndpointCertificateArn: FnIf('CustomEndpointEnabled', Ref('CustomEndpointCertificateArn'), Ref('AWS::NoValue')),
     })
+    AIMLOptions aiml_option unless aiml_option.empty?
     EBSOptions ebs_options unless ebs_options.empty?
     ClusterConfig({
       DedicatedMasterEnabled: FnIf('DedicatedMasterSet', true, false),
