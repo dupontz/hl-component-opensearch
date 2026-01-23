@@ -83,7 +83,7 @@ CloudFormation do
          CustomEndpoint: FnIf('CustomEndpointEnabled', Ref('CustomEndpoint'), Ref('AWS::NoValue')),
          CustomEndpointCertificateArn: FnIf('CustomEndpointEnabled', Ref('CustomEndpointCertificateArn'), Ref('AWS::NoValue')),
     })
-    AIMLOptions aiml_option unless aiml_option.empty?
+    AIMLOptions aiml_options unless aiml_options.empty?
     EBSOptions ebs_options unless ebs_options.empty?
     ClusterConfig({
       DedicatedMasterEnabled: FnIf('DedicatedMasterSet', true, false),
