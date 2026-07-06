@@ -1,6 +1,6 @@
 CfhighlanderTemplate do
 
-  DependsOn 'lib-ec2@0.1.0'
+  DependsOn 'lib-ec2@0.2.1'
 
   Parameters do
     ComponentParam 'EnvironmentName', 'dev', isGlobal: true
